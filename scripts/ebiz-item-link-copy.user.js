@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ebiz item link copy
 // @namespace    https://github.com/dasewing/tm-scripts
-// @version      1.0.0
+// @version      1.1.0
 // @description  Copy cleaned item links on Taobao, Tmall, Goofish (Xianyu) and JD product pages.
 // @author       David
 // @match        https://item.taobao.com/item.htm*
@@ -11,9 +11,9 @@
 // @match        https://*.tmall.com/item.htm*
 // @match        https://*.tmall.hk/item.htm*
 // @match        https://www.goofish.com/*
-// @match        https://item.jd.com/*.html
-// @match        https://item.jd.hk/*.html
-// @match        https://item.m.jd.com/product/*.html
+// @match        https://item.jd.com/*.html*
+// @match        https://item.jd.hk/*.html*
+// @match        https://item.m.jd.com/product/*.html*
 // @updateURL    https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/ebiz-item-link-copy.user.js
 // @downloadURL  https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/ebiz-item-link-copy.user.js
 // @grant        none

@@ -70,7 +70,11 @@ scripts/
 
 ## 版本记录
 
-### v1.5.0（2026-10-08）
+### v1.7.0（2026-10-08）
+
+- 修复 `ebiz-item-link-copy` 1.1.0：京东三条 `@match` 补尾部 `*`，带 query string 的商品链接也能匹配。
+
+### v1.6.0（2026-10-08）
 
 - 重构：公共代码从单一 `user-script-ui.js` 拆分为 `common/clipboard.js`、`dom.js`、`ui.js`，新增 `scripts/build.js` 标记内联构建，seedhub / bilibili / clm / jd 四个脚本全部迁移（seedhub 1.5.0、bilibili 1.4.0、clm 1.7.0、jd 1.1.0）。
 - 修复 seedhub 内联副本与公共 UI 类长期漂移的问题；删除 clm 死代码 `escapeHTML`。
