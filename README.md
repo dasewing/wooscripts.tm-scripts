@@ -20,7 +20,7 @@
 
 提取 `.bili-cover-card` 链接，仅生成换行分隔的 URL 并复制到剪贴板，完成后显示记录数 Toast。选择弹层默认全选，并提供“全选/取消全选”按钮。
 
-通用 UI 类源码位于 [`scripts/common/user-script-ui.js`](./scripts/common/user-script-ui.js)，发布版会将其内联到 `.user.js`，无需额外加载依赖。
+通用工具源码位于 [`scripts/common/`](./scripts/common/)（`clipboard.js`、`dom.js`、`ui.js`），由构建脚本内联到各 `.user.js` 的 `// ==INLINE==` 标记区，无需额外加载依赖。
 
 ### 京东：搜索结果页优化
 
@@ -45,6 +45,10 @@
 
 安装 Tampermonkey 后，打开 `.user.js` 文件并在 Tampermonkey 编辑器中保存，或从 GitHub Release 下载对应脚本安装。
 
+## 构建
+
+修改 `scripts/common/` 下的公共模块后，运行 `node scripts/build.js` 将其重新内联到各 `.user.js` 的 `// ==INLINE==` 标记区（标记区内为生成内容，请勿手改）。`node scripts/build.js --check` 只校验不同步并退出非零，可用于提交前自查。
+
 ## 发布
 
-每个版本通过 Git tag 发布。当前版本：`v1.4.5`。
+每个版本通过 Git tag 发布。当前版本：`v1.5.0`。
