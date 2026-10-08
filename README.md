@@ -1,54 +1,50 @@
 # tm-scripts
 
-个人 Tampermonkey 用户脚本集合。请使用 `scripts/` 下的 `.user.js` 文件安装。
-
-## 脚本
-
-### SeedHub：种子标题替换与二维码链接复制
-
-- 安装：[seedhub-opti.user.js](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/seedhub-opti.user.js)
-- 页面：`https://www.seedhub.cc/movies/{id}/`、`https://www.seedhub.cc/link_start/*`
-- 范围：`.seed-list > ul > li > a[title]`
-
-将匹配链接的 `innerText` 替换为其 `title` 属性值，并处理后续动态加载的内容。在二维码页面点击“识别二维码”，脚本会将 `#qrcode > img` 解码为可点击链接，并提供“复制链接”按钮。“识别二维码”按钮会插入到 `.mobile-pan > span.txt` 前面；页面上没有该元素时，则回退到固定在右下角。
-
-### Bilibili：生成视频下载命令
-
-- 安装：[bilibili-video-dl-url-maker.user.js](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/bilibili-video-dl-url-maker.user.js)
-- 页面：Bilibili 页面
-- 用法：点击“复制视频链接”可复制全部 URL；点击“选择视频”可在弹层中多选视频后复制，也可以在控制台执行 `make_bl_download_scripts()`
-
-提取 `.bili-cover-card` 链接，仅生成换行分隔的 URL 并复制到剪贴板，完成后显示记录数 Toast。选择弹层默认全选，并提供“全选/取消全选”按钮。
-
-通用工具源码位于 [`scripts/common/`](./scripts/common/)（`clipboard.js`、`dom.js`、`ui.js`），由构建脚本内联到各 `.user.js` 的 `// ==INLINE==` 标记区，无需额外加载依赖。
-
-### 京东：搜索结果页优化
-
-- 安装：[jd-search-result-optimizer.user.js](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/jd-search-result-optimizer.user.js)
-- 页面：`https://search.jd.com/Search*`
-- 功能：自动隐藏带有“京喜自营”标签的商品卡片，支持搜索结果动态加载。
-
-### CLM：种子收藏与访问管理
-
-- 安装：[clm-torrent-library.user.js](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/clm-torrent-library.user.js)
-- 页面：`https://www.clmclm.com/search-*.html`、`https://www.clmclm.com/hash/*.html`、`https://mypikpak.com/drive/all*`
-- 功能：详情页和搜索结果卡片均可收藏、备注和复制磁链；搜索结果徽章显示复制次数及上次访问时间。可隐藏单条种子，默认不显示在搜索结果和种子库，搜索页可临时显示已隐藏结果，种子库可筛选已隐藏记录并取消隐藏。左下角“种子库”以表格管理记录，支持搜索、筛选、排序、收藏、备注、全选、复制和删除。PikPak 页面共享同一种子库；打开“创建云下载任务”弹窗后可从种子库选择单条或批量磁链填入，最后由用户确认创建。首次更新后需访问一次 CLM 页面，旧记录才会迁移到跨站存储。
-
-### 微信文章链接自动跳转
-
-- 安装：[weixin-article-link-auto-redirector.user.js](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/weixin-article-link-auto-redirector.user.js)
-- 页面：虎嗅文章页、36Kr 文章页
-
-自动查找页面中的微信公众号文章链接并跳转。
+个人 Tampermonkey 用户脚本集合。
 
 ## 安装
 
-安装 Tampermonkey 后，打开 `.user.js` 文件并在 Tampermonkey 编辑器中保存，或从 GitHub Release 下载对应脚本安装。
+1. 先在浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/) 扩展。
+2. 点击下面任意脚本的"安装"链接，在 Tampermonkey 弹出的页面中确认安装即可。安装后的脚本会自动检查更新。
 
-## 构建
+## 脚本
 
-修改 `scripts/common/` 下的公共模块后，运行 `node scripts/build.js` 将其重新内联到各 `.user.js` 的 `// ==INLINE==` 标记区（标记区内为生成内容，请勿手改）。`node scripts/build.js --check` 只校验不同步并退出非零，可用于提交前自查。
+### SeedHub：种子标题替换与二维码复制
 
-## 发布
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/seedhub-opti.user.js)
+- 支持：SeedHub 电影页、二维码跳转页
+- 功能：把种子列表里的链接文字替换为完整标题；在二维码页点击"识别二维码"，自动解码出链接并复制。
 
-每个版本通过 Git tag 发布。当前版本：`v1.5.0`。
+### Bilibili：批量复制视频链接
+
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/bilibili-video-dl-url-maker.user.js)
+- 支持：Bilibili 各页面
+- 功能：右下角"复制视频链接"一键复制当前页全部视频地址；"选择视频"可在弹层中勾选后再复制。
+
+### 京东：搜索结果优化
+
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/jd-search-result-optimizer.user.js)
+- 支持：京东搜索结果页
+- 功能：自动隐藏带"京喜自营"标签的商品卡片。
+
+### 电商商品页：精简链接复制
+
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/ebiz-item-link-copy.user.js)
+- 支持：淘宝、天猫、闲鱼、京东的商品页
+- 功能：商品页右下角显示"复制商品链接"按钮，自动去掉跟踪参数，只保留商品本身需要的参数。
+
+### CLM：种子收藏与访问管理
+
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/clm-torrent-library.user.js)
+- 支持：CLM 搜索页与详情页、PikPak 网盘页
+- 功能：种子可收藏、备注、隐藏、一键复制磁链；左下角"种子库"集中管理所有记录；在 PikPak 创建云下载任务时可直接从种子库选择磁链填入。
+
+### 微信文章链接自动跳转
+
+- [安装](https://raw.githubusercontent.com/dasewing/tm-scripts/main/scripts/weixin-article-link-auto-redirector.user.js)
+- 支持：虎嗅、36Kr 文章页
+- 功能：自动跳转到页面中引用的微信公众号原文。
+
+---
+
+开发者说明（脚本机制、构建方式、发布流程）见 [docs/DEV-LOG.md](./docs/DEV-LOG.md)。
